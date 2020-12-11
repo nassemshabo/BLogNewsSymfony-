@@ -1,0 +1,14 @@
+body {
+    background-color: lightgray;
+}
+
+.slider {
+    max-height: 200px;
+}
+.carousel {
+    height: 500px;
+}
+image {
+    height: auto;
+    width: 100%;
+}
