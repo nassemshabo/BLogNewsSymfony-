@@ -1,0 +1,31 @@
+.edit_form {
+  background: #d6d6d6;
+  width: 50%;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1000;
+  padding: 50px;
+  border: 2px solid #ff477e;
+  border-radius: 20px;
+  .title {
+    background: #011627;
+    color: #FFFFFF;
+    text-align: center;
+    display: block;
+    padding: 20px 0;
+    margin-bottom: 40px;
+  }
+
+  .inputs {
+    margin: 10px;
+  }
+  .close_icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+
+}

@@ -45,6 +45,7 @@ export default function CustomizedTables({data}) {
 
     const [ massage , setMessage ] = useState('');
     const [editForm , setEditForm ] = useState(false);
+    const [article , setArticle ] = useState('')
 
 
     const deleteItem = (id) => {
@@ -60,7 +61,7 @@ export default function CustomizedTables({data}) {
 
     const editItem = (id) => {
         axios.post('api/admin/edit', id).then(respnse => {
-            console.log(respnse.data)
+            setArticle(respnse.data)
             setEditForm(!editForm)
         }).catch(error => {
             console.log(error)
@@ -69,7 +70,7 @@ export default function CustomizedTables({data}) {
 
     return (
        <div>
-           <EditBlog show={editForm}/>
+           <EditBlog show={[{editForm , setEditForm}]} articleData={[{article , setArticle}]}/>
            {massage?<Alert severity="success">{massage}</Alert>:null}
            <TableContainer component={Paper}>
                <Table className={classes.table} aria-label="customized table">
@@ -88,7 +89,7 @@ export default function CustomizedTables({data}) {
                                   <StyledTableCell component="th" scope="row">
                                       {data.title}
                                   </StyledTableCell>
-                                  <StyledTableCell align="right">{<EditIcon  color="secondary" onClick={()=> editItem(data.id)}  />}</StyledTableCell>
+                                  <StyledTableCell align="right">{<EditIcon color="secondary" onClick={()=> editItem(data.id)}  />}</StyledTableCell>
                                   <StyledTableCell align="right">{<BackspaceIcon onClick={()=> deleteItem(data.id)} color="secondary"/>}</StyledTableCell>
                                   <StyledTableCell align="right">{<Swich article={data} />}</StyledTableCell>
                               </StyledTableRow>

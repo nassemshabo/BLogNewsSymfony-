@@ -24,7 +24,6 @@ const Addpost = ({data}) => {
                 subtitle : subTitle,
                 img_url : imgData,
                 main_desc : desc
-
             })
 
         return  <Redirect to="/" />
@@ -34,7 +33,7 @@ const Addpost = ({data}) => {
 
         if (blog !== '') {
 
-            axios.post('api/blogs/create', blog).then(response => {
+            axios.post('api/blogs/create', blog).then( response => {
 
             }).catch(error => {
                 console.error(error)
