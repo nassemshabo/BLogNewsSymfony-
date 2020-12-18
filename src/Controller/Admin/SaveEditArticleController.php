@@ -2,23 +2,38 @@
 
 namespace App\Controller\Admin;
 
-
+use App\Service\ArticleServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+/**
+ * Class AddDataController
+ */
 class SaveEditArticleController extends AbstractController
 {
-    /***
-     * @Route('api/admin/edit/save')
-     * @param Request $request
-     */
-    public function __invoke (Request $request )
-    {
-         $article = $request->getContent();
+    /** @var ArticleServiceInterface */
+    private $articleService;
 
-         dd($article);
+
+    public function __construct(ArticleServiceInterface $articleService )
+    {
+        $this->articleService = $articleService;
+    }
+
+    /**
+     * @Route("api/admin/edit/save")
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function __invoke(Request $request)
+    {
+        $id = $request->getContent();
+        $article = $this->articleService->findById($id);
+
+        dd($article);
     }
 
 }

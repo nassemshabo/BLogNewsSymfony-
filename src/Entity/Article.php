@@ -26,22 +26,22 @@ class Article
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $title;
+    private string $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $subtitle;
+    private string $subtitle;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $imgUrl;
+    private string $imgUrl;
 
     /**
      * @ORM\Column(type="string", length=500)
      */
-    private $mainDesc;
+    private string $mainDesc;
 
 
     /**
@@ -58,65 +58,82 @@ class Article
         $this->id = Uuid::uuid4()->toString();
     }
 
-    public function getId(): ?string
+    /**
+     * @return string
+     */
+    public function getId(): string
     {
         return $this->id;
     }
 
-
-    public function setId(string $id)
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
 
-    public function getTitle(): ?string
+    /**
+     * @return string
+     */
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
-    public function getSubtitle(): ?string
+    /**
+     * @return string
+     */
+    public function getSubtitle(): string
     {
         return $this->subtitle;
     }
 
-    public function setSubtitle(string $subtitle): self
+    /**
+     * @param string $subtitle
+     */
+    public function setSubtitle(string $subtitle): void
     {
         $this->subtitle = $subtitle;
-
-        return $this;
     }
 
-    public function getImgUrl(): ?string
+    /**
+     * @return string
+     */
+    public function getImgUrl(): string
     {
         return $this->imgUrl;
     }
 
-    public function setImgUrl(string $imgUrl): self
+    /**
+     * @param string $imgUrl
+     */
+    public function setImgUrl(string $imgUrl): void
     {
         $this->imgUrl = $imgUrl;
-
-        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getMainDesc()
+    public function getMainDesc(): string
     {
         return $this->mainDesc;
     }
 
     /**
-     * @param mixed $mainDesc
+     * @param string $mainDesc
      */
-    public function setMainDesc($mainDesc): void
+    public function setMainDesc(string $mainDesc): void
     {
         $this->mainDesc = $mainDesc;
     }
@@ -124,7 +141,7 @@ class Article
     /**
      * @return bool
      */
-    public function getActivated()
+    public function isActivated(): bool
     {
         return $this->activated;
     }
@@ -132,9 +149,8 @@ class Article
     /**
      * @param bool $activated
      */
-    public function setActivated($activated): void
+    public function setActivated(bool $activated): void
     {
         $this->activated = $activated;
     }
-
 }

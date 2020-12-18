@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\DataTransfer\ArticleDTO;
 use App\Entity\Article;
 use App\Service\ArticleServiceInterface;
 use phpDocumentor\Reflection\Types\True_;
@@ -36,16 +37,14 @@ class AddDataController extends AbstractController
     {
         $content = json_decode($request->getContent() , true);
 
+        $articleDto = new ArticleDTO();
+        $articleDto->activated = true;
+        $articleDto->imgUrl = "https://tollesbild.jpg";
+        $articleDto->title = "Hallo Welt";
+        $articleDto->mainDesc = "Ich bin ein ganz toller Text mit sehr sehr viel Inhalt, das kannst du dir nicht vorstellen";
+        $articleDto->subtitle = "Untertitel";
 
-        $article = new Article();
-
-
-        $article->setTitle( $content['title']);
-        $article->setSubtitle($content['subtitle']);
-        $article->setImgUrl($content['img_url']);
-        $article->setMainDesc($content['main_desc']);
-
-        $this->articleService->save($article);
+        $this->articleService->save($articleDto);
 
         return $this->redirect('/admin');
     }

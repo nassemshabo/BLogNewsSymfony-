@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {Table ,TableBody ,TableCell ,TableContainer , TableHead ,Paper } from '@material-ui/core';
 import Swich from "./Swich";
 import BackspaceIcon from '@material-ui/icons/Backspace';
 import EditIcon from '@material-ui/icons/Edit';
@@ -43,14 +37,14 @@ const useStyles = makeStyles({
 export default function CustomizedTables({data}) {
     const classes = useStyles();
 
-    const [ massage , setMessage ] = useState('');
+    const [ massage ] = useState('');
     const [editForm , setEditForm ] = useState(false);
     const [article , setArticle ] = useState('')
 
 
     const deleteItem = (id) => {
-        axios.post('api/admin/delete', id).then(respnse => {
-            console.log(respnse.data)
+        axios.post('api/admin/delete', id).then(res => {
+            console.log(res.data)
             setTimeout(()=> {
                 location.reload()
             } , 600 )
@@ -60,8 +54,8 @@ export default function CustomizedTables({data}) {
     }
 
     const editItem = (id) => {
-        axios.post('api/admin/edit', id).then(respnse => {
-            setArticle(respnse.data)
+        axios.post('api/admin/edit', id).then(res => {
+            setArticle(res.data)
             setEditForm(!editForm)
         }).catch(error => {
             console.log(error)

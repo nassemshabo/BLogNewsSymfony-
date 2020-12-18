@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Service;
-
 
 use App\DataAccess\ArticleGatewayInterface;
 use App\DataTransfer\ArticleDTO;
@@ -29,21 +27,23 @@ class ArticleService implements ArticleServiceInterface
 
     /**
      * @param string $id
+     *
      * @return ArticleDTO
      */
-    public function findById(string $id) {
-        return  $this->articleGateway->findById($id);
+    public function findById(string $id)
+    {
+        return $this->articleGateway->findById($id);
     }
 
     /**
      * @param ArticleDTO $articleDTO
+     *
      * @return bool
      */
-    public function save(ArticleDTO $articleDTO) {
-
+    public function save(ArticleDTO $articleDTO)
+    {
         return $this->articleGateway->save($articleDTO);
     }
-
 
     /**
      * @param string $id
@@ -54,6 +54,4 @@ class ArticleService implements ArticleServiceInterface
     {
         return $this->articleGateway->delete($id);
     }
-
-
 }

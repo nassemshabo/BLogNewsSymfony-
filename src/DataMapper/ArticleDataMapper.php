@@ -43,7 +43,7 @@ class ArticleDataMapper
         $articleDTO->subtitle   = $article->getSubtitle();
         $articleDTO->mainDesc   = $article->getMainDesc();
         $articleDTO->imgUrl     = $article->getImgUrl();
-        $articleDTO->activated  = $article->getActivated();
+        $articleDTO->activated  = $article->isActivated();
 
         return $articleDTO;
     }

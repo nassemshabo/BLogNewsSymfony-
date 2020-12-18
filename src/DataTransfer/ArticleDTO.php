@@ -8,18 +8,17 @@ use Ramsey\Uuid\Uuid;
 class ArticleDTO
 {
 
-    public ?string  $id;
+    public string  $id;
 
-    public ?string  $title;
+    public string  $title;
 
-    public ?string $subtitle;
+    public string $subtitle;
 
-    public ?string $imgUrl;
+    public string $imgUrl;
 
-    public ?string $mainDesc;
+    public string $mainDesc;
 
     public bool $activated;
-
 
     public function __construct()
     {

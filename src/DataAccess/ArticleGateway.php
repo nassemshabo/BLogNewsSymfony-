@@ -67,6 +67,7 @@ class ArticleGateway implements ArticleGatewayInterface
      */
     public function save(ArticleDTO $articleDTO){
         $article = ArticleDataMapper::mapDtoToEntity($articleDTO);
+
         try {
             $this->em->merge($article);
             $this->em->flush();
